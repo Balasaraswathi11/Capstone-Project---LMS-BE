@@ -133,6 +133,7 @@ export const resetPassword = TryCatch(async (req, res) => {
   try {
     const token = req.params.token;  // Changed from req.query.token to req.params.token
     const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+    
     const user = await User.findOne({ email: decodedData.email });
 
     if (!user) {

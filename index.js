@@ -21,7 +21,10 @@ export const instance = new Razorpay({
 
 // Initialize Express app
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: process.env.frontendurl, 
+    credentials: true
+}));
 app.use(express.json());
 
 // Set up a basic route to confirm the app is working
